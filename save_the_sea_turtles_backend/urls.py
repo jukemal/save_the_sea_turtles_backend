@@ -7,6 +7,8 @@ from rest_framework import routers
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+from app.views import DistrictViewset
+
 schema_view = get_schema_view(
     openapi.Info(
         title="Save the Sea Turtle API",
@@ -20,6 +22,7 @@ schema_view = get_schema_view(
 )
 
 router = routers.DefaultRouter()
+router.register(r'districts', DistrictViewset)
 
 urlpatterns = [
     path('', include(router.urls)),
