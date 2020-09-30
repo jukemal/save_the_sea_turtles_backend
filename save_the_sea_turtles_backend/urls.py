@@ -7,7 +7,7 @@ from rest_framework import routers
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-from app.views import DistrictViewset, SeaTurtleCountViewset
+from app.views import DistrictViewset, SeaTurtleCountViewset, CountPredictionViewSet
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -24,6 +24,8 @@ schema_view = get_schema_view(
 router = routers.DefaultRouter()
 router.register(r'districts', DistrictViewset)
 router.register(r'sea_turtle_count', SeaTurtleCountViewset)
+router.register(r'sea_turtle_count_prediction',
+                CountPredictionViewSet, basename="sea_turtle_count_prediction")
 
 urlpatterns = [
     path('', include(router.urls)),

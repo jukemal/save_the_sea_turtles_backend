@@ -13,3 +13,14 @@ class SeaTurtleCountSerializer(serializers.ModelSerializer):
         model = SeaTurtleCount
         fields = '__all__'
         depth = 1
+
+
+class CountPredictionDataSerializer(serializers.Serializer):
+    date = serializers.DateField()
+    count = serializers.IntegerField()
+
+
+class CountPredictionSerializer(serializers.Serializer):
+    district = DistrictSerializer()
+    real = CountPredictionDataSerializer(many=True)
+    predicted = CountPredictionDataSerializer(many=True)
